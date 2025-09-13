@@ -1,8 +1,9 @@
+import Layout from "./layout/Layout";
 const App = () => {
   return (
-    <div>
-      <h1>Hello, React</h1>
-    </div>
+    <>
+      <Layout />
+    </>
   );
 };
 
