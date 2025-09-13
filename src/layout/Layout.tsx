@@ -1,4 +1,5 @@
 import Header from "./header/Header";
+import Footer from "./footer/Footer";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
@@ -8,6 +9,7 @@ const Layout = () => {
       <main className="flex-1 flex items-center justify-center">
         <Outlet />
       </main>
+      <Footer />
     </section>
   );
 };
