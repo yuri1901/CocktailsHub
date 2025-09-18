@@ -6,8 +6,8 @@ import CocktailsContext from "./context/CocktailsContext";
 
 import Layout from "./layout/Layout";
 import Home from "./pages/Home/Home";
-// import CocktailsList from "./pages/Coctails/components/CoctailsList";
 import Coctails from "./pages/Coctails/Coctails";
+import CocktailDetails from "./pages/CocktailDetails/CocktailDetails";
 
 const App = () => {
   const { nameCard, loading, error, inputValue, handleChangeInput, getCocktailsByName, setLoading } = useCocktailsByName();
@@ -26,6 +26,10 @@ const App = () => {
             <Route
               path="/cocktails"
               element={<Coctails />}
+            />
+            <Route
+              path="/cocktails/:id"
+              element={<CocktailDetails />}
             />
           </Route>
         </Routes>
