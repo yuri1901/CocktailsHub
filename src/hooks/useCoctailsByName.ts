@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchCocktailForName } from "../services/api";
+import { fetchCocktailByName } from "../services/api";
 import type { Cocktail } from "../services/api";
 
 export default function useCocktailsByName() {
@@ -13,7 +13,7 @@ export default function useCocktailsByName() {
 
   const getCocktailsByName = async () => {
     try {
-      const data = await fetchCocktailForName(inputValue);
+      const data = await fetchCocktailByName(inputValue);
       setNameCard(data);
     } catch (error) {
       setError(error instanceof Error ? error.message : String(error));

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import CocktailsContext from "../../../context/CocktailsContext";
 import Loading from "../../../components/loading/Loading";
@@ -36,12 +37,12 @@ export default function CocktailsList() {
                   {cocktail.strCategory} | {cocktail.strAlcoholic}
                 </span>
                 <p className="text-sm text-gray-600 mb-2">Glass: {cocktail.strGlass}</p>
-                <a
-                  href={`/cocktail/${cocktail.idDrink}`}
+                <Link
+                  to={`/cocktails/${cocktail.idDrink}`}
                   className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-center"
                 >
                   Детальніше
-                </a>
+                </Link>
               </div>
             ))}
           </div>

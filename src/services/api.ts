@@ -12,7 +12,7 @@ export interface Cocktail {
 
 const API_BASE: string = import.meta.env.VITE_API_BASE;
 
-export const fetchCocktailForName = async (name: string) => {
+export const fetchCocktailByName = async (name: string) => {
   try {
     const { data } = await axios.get(`${API_BASE}/search.php?s=${name}`);
     return data.drinks;
@@ -36,6 +36,16 @@ export const fetchCocktailRandom = async () => {
     return data.drinks[0];
   } catch (error) {
     console.error("Помилка fetchRandomCocktail:", error);
-    throw error;
+    return [];
+  }
+};
+
+export const fetchCocktailById = async (id: string) => {
+  try {
+    const { data } = await axios.get(`${API_BASE}/lookup.php?i=${id}`);
+    return data.drinks;
+  } catch (error) {
+    console.error("Помилка fetchCocktailForId:", error);
+    return [];
   }
 };
