@@ -25,7 +25,7 @@ const SearchBar = () => {
         navigate("/cocktails");
       }}
       action="#"
-      className="flex items-center gap-2 p-2 bg-white rounded-lg shadow-md max-w-md mx-auto"
+      className="flex items-center gap-2 p-2 bg-white rounded-lg shadow-md max-w-md "
     >
       <label
         htmlFor="search-coctel"

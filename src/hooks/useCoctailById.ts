@@ -1,6 +1,11 @@
+// hooks
 import { useParams } from "react-router-dom";
-import { fetchCocktailById } from "../services/api";
 import { useState, useEffect } from "react";
+
+// fetch API by id
+import { fetchCocktailById } from "../services/api";
+
+// type Cocktail
 import type { Cocktail } from "../services/api";
 
 export default function useCoctailById() {
