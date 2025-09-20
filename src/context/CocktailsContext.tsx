@@ -1,4 +1,7 @@
+// context
 import { createContext } from "react";
+
+// type
 import type { Cocktail } from "../services/api";
 
 export interface CocktailsContextType {

@@ -1,5 +1,10 @@
+// hooks
 import { useState, useEffect } from "react";
+
+// fetch API random
 import { fetchCocktailRandom } from "../services/api";
+
+// type Cocktail
 import type { Cocktail } from "../services/api";
 
 export default function useRandomCocktail() {

@@ -1,5 +1,10 @@
+// hook
 import { useState } from "react";
+
+// fetch API by Name
 import { fetchCocktailByName } from "../services/api";
+
+// type Cocktail
 import type { Cocktail } from "../services/api";
 
 export default function useCocktailsByName() {

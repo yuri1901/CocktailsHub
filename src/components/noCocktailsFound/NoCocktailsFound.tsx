@@ -1,10 +1,4 @@
-interface NoCocktailsFoundProps {
-  show: boolean;
-}
-
-export default function NoCocktailsFound({ show }: NoCocktailsFoundProps) {
-  if (!show) return null;
-
+export default function NoCocktailsFound() {
   return (
     <div className="flex flex-col items-center justify-center">
       <svg

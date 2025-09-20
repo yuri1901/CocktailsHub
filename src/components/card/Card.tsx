@@ -1,5 +1,4 @@
-import Order from "../order/Order";
-
+import OrderButton from "../orderButton/OrderButton";
 interface CartProps {
   strDrink: string;
   strDrinkThumb: string;
@@ -34,7 +33,7 @@ const Card: React.FC<CartProps> = ({ strDrink, strDrinkThumb, strCategory, strAl
         </ul>
       </div>
       <p className="text-sm text-gray-600 text-center mb-4 whitespace-pre-line">{strInstructions}</p>
-      <Order />
+      <OrderButton />
     </article>
   );
 };

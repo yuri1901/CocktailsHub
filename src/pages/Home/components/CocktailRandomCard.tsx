@@ -1,7 +1,10 @@
+// custom hook
 import useRandomCocktail from "../../../hooks/useRandomCocktails";
 
+// components
 import Loading from "../../../components/loading/Loading";
 import Error from "../../../components/error/Error";
+import OrderButton from "../../../components/orderButton/OrderButton";
 
 export default function CocktailRandomCard() {
   const { randomCard, loading, error } = useRandomCocktail();
@@ -26,7 +29,7 @@ export default function CocktailRandomCard() {
             <b>Glass:</b> {randomCard.strGlass}
           </p>
           <p className="text-sm text-gray-600 text-center mb-4">{randomCard.strInstructions}</p>
-          <button className="cursor-pointer mt-2 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Замовити</button>
+          <OrderButton />
         </article>
       )}
     </>
