@@ -1,5 +1,14 @@
+// component
 import OrderButton from "../orderButton/OrderButton";
+
+// hook
+import { useContext } from "react";
+
+// context
+import OrderContext from "../../context/OrderContext";
+
 interface CartProps {
+  idDrink: string;
   strDrink: string;
   strDrinkThumb: string;
   strCategory: string;
@@ -9,7 +18,8 @@ interface CartProps {
   ingredients: string[];
 }
 
-const Card: React.FC<CartProps> = ({ strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, ingredients }: CartProps) => {
+const Card: React.FC<CartProps> = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, ingredients }: CartProps) => {
+  const { addCocktailToList } = useContext(OrderContext);
   return (
     <article className="border border-gray-200 rounded-xl p-5 max-w-[350px] shadow-md bg-white flex flex-col items-center mx-auto">
       <img
@@ -33,7 +43,19 @@ const Card: React.FC<CartProps> = ({ strDrink, strDrinkThumb, strCategory, strAl
         </ul>
       </div>
       <p className="text-sm text-gray-600 text-center mb-4 whitespace-pre-line">{strInstructions}</p>
-      <OrderButton />
+      <OrderButton
+        orderCocktail={() =>
+          addCocktailToList({
+            idDrink: idDrink!,
+            strDrink: strDrink,
+            strDrinkThumb: strDrinkThumb,
+            strCategory: strCategory,
+            strAlcoholic: strAlcoholic,
+            strGlass: strGlass,
+            strInstructions: strInstructions,
+          })
+        }
+      />
     </article>
   );
 };

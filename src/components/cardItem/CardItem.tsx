@@ -7,11 +7,19 @@ import type { Cocktail } from "../../services/api";
 // components
 import OrderButtons from "../orderButton/OrderButton";
 
+// context
+import OrderContext from "../../context/OrderContext";
+
+// hook
+import { useContext } from "react";
+
 interface CardItemProps {
   cocktail: Cocktail;
 }
 
 export default function CardItem({ cocktail }: CardItemProps) {
+  const { addCocktailToList } = useContext(OrderContext);
+
   return (
     <article className="cursor-pointer border rounded-xl p-4 bg-white shadow  flex flex-col items-center">
       <img
@@ -31,7 +39,7 @@ export default function CardItem({ cocktail }: CardItemProps) {
         >
           Детальніше
         </Link>
-        <OrderButtons />
+        <OrderButtons orderCocktail={() => addCocktailToList(cocktail)} />
       </div>
     </article>
   );
