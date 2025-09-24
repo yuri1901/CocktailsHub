@@ -8,6 +8,7 @@ import useOrderCocktail from "./hooks/useOrderCocktails";
 // context
 import CocktailsContext from "./context/CocktailsContext";
 import OrderContext from "./context/OrderContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 // layout
 import Layout from "./layout/Layout";
@@ -22,31 +23,33 @@ const App = () => {
   const { orderCocktails, addCocktailToList, removeCocktailFromList, clearCart } = useOrderCocktail();
 
   return (
-    <CocktailsContext.Provider value={{ nameCard, loading, error, inputValue, handleChangeInput, getCocktailsByName, setLoading }}>
-      <OrderContext.Provider value={{ orderCocktails, addCocktailToList, removeCocktailFromList, clearCart }}>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={<Layout />}
-            >
+    <ThemeProvider>
+      <CocktailsContext.Provider value={{ nameCard, loading, error, inputValue, handleChangeInput, getCocktailsByName, setLoading }}>
+        <OrderContext.Provider value={{ orderCocktails, addCocktailToList, removeCocktailFromList, clearCart }}>
+          <BrowserRouter>
+            <Routes>
               <Route
-                index
-                element={<Home />}
-              />
-              <Route
-                path="/cocktails"
-                element={<Coctails />}
-              />
-              <Route
-                path="/cocktails/:id"
-                element={<CocktailDetails />}
-              />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </OrderContext.Provider>
-    </CocktailsContext.Provider>
+                path="/"
+                element={<Layout />}
+              >
+                <Route
+                  index
+                  element={<Home />}
+                />
+                <Route
+                  path="/cocktails"
+                  element={<Coctails />}
+                />
+                <Route
+                  path="/cocktails/:id"
+                  element={<CocktailDetails />}
+                />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </OrderContext.Provider>
+      </CocktailsContext.Provider>
+    </ThemeProvider>
   );
 };
 
