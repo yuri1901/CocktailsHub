@@ -21,6 +21,7 @@ export default function CocktailDetails() {
       {!loading && !error && !cardById && <NoCocktailsFound />}
       {!loading && !error && cardById && (
         <Card
+          idDrink={cardById.idDrink}
           strDrink={cardById.strDrink}
           strDrinkThumb={cardById.strDrinkThumb}
           strCategory={cardById.strCategory}

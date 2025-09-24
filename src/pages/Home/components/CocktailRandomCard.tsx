@@ -1,6 +1,12 @@
 // custom hook
 import useRandomCocktail from "../../../hooks/useRandomCocktails";
 
+// hook
+import { useContext } from "react";
+
+// context
+import OrderContext from "../../../context/OrderContext";
+
 // components
 import Loading from "../../../components/loading/Loading";
 import Error from "../../../components/error/Error";
@@ -8,6 +14,7 @@ import OrderButton from "../../../components/orderButton/OrderButton";
 
 export default function CocktailRandomCard() {
   const { randomCard, loading, error } = useRandomCocktail();
+  const { addCocktailToList } = useContext(OrderContext);
 
   return (
     <>
@@ -29,7 +36,7 @@ export default function CocktailRandomCard() {
             <b>Glass:</b> {randomCard.strGlass}
           </p>
           <p className="text-sm text-gray-600 text-center mb-4">{randomCard.strInstructions}</p>
-          <OrderButton />
+          <OrderButton orderCocktail={() => addCocktailToList(randomCard)} />
         </article>
       )}
     </>
