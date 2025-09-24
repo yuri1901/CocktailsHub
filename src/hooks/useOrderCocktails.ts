@@ -8,12 +8,30 @@ export interface CartItem {
 
 export default function useOrderCocktail() {
   const [orderCocktails, setOrderCocktails] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem("orderCocktails");
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem("orderCocktails");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Перевіряємо та нормалізуємо дані
+        if (Array.isArray(parsed)) {
+          return parsed.filter((item) => item && item.cocktail && typeof item.quantity === "number" && !isNaN(item.quantity));
+        }
+      }
+      return [];
+    } catch (error) {
+      console.error("Error parsing localStorage:", error);
+      // Очищаємо пошкоджені дані
+      localStorage.removeItem("orderCocktails");
+      return [];
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem("orderCocktails", JSON.stringify(orderCocktails));
+    try {
+      localStorage.setItem("orderCocktails", JSON.stringify(orderCocktails));
+    } catch (error) {
+      console.error("Error saving to localStorage:", error);
+    }
   }, [orderCocktails]);
 
   const addCocktailToList = (cocktail: Cocktail) => {
@@ -23,9 +41,10 @@ export default function useOrderCocktail() {
 
       if (existingIndex !== -1) {
         const updatedData = [...data];
+        const currentQuantity = Number(updatedData[existingIndex].quantity) || 0;
         updatedData[existingIndex] = {
           ...updatedData[existingIndex],
-          quantity: updatedData[existingIndex].quantity + 1,
+          quantity: currentQuantity + 1,
         };
         return updatedData;
       } else {
@@ -37,12 +56,15 @@ export default function useOrderCocktail() {
   const removeCocktailFromList = (index: number) => {
     setOrderCocktails((data) => {
       const item = data[index];
-      if (item.quantity > 1) {
+      if (!item) return data;
+
+      const currentQuantity = Number(item.quantity) || 0;
+      if (currentQuantity > 1) {
         // Якщо quantity > 1 - зменшити на 1
         const updatedData = [...data];
         updatedData[index] = {
           ...item,
-          quantity: item.quantity - 1,
+          quantity: currentQuantity - 1,
         };
         return updatedData;
       } else {
@@ -53,7 +75,11 @@ export default function useOrderCocktail() {
 
   const clearCart = () => {
     setOrderCocktails([]);
-    localStorage.removeItem("orderCocktails");
+    try {
+      localStorage.removeItem("orderCocktails");
+    } catch (error) {
+      console.error("Error clearing localStorage:", error);
+    }
   };
 
   return { orderCocktails, addCocktailToList, removeCocktailFromList, clearCart };

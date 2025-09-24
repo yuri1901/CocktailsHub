@@ -36,7 +36,7 @@ const Basket = () => {
           alt="basket icon"
           className="w-6 h-6 md:w-10 md:h-10 drop-shadow"
         />
-        <span className="absolute bottom-[-4px] right-[-4px] md:bottom-[-8px] md:right-[-8px] bg-pink-500 text-white text-xs md:text-base font-bold rounded-full px-2 py-0.5 md:px-3 md:py-1 shadow-lg border-2 border-white">{orderCocktails.reduce((sum, item) => sum + item.quantity, 0)}</span>
+        <span className="absolute bottom-[-4px] right-[-4px] md:bottom-[-8px] md:right-[-8px] bg-pink-500 text-white text-xs md:text-base font-bold rounded-full px-2 py-0.5 md:px-3 md:py-1 shadow-lg border-2 border-white">{orderCocktails.reduce((sum, item) => sum + (item.quantity || 0), 0) || 0}</span>
       </button>
     </>
   );
