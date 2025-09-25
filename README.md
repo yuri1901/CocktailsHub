@@ -53,4 +53,4 @@ CocktailsHub is a modern web application for searching, viewing, and ordering co
 
 ![White Theme](./screenshots/lightTheme.png)
 
-🌐 Try it online: [CocktailsHub](https://cocktailshub.vercel.app)
+🌐 Try it online: [CocktailsHub](https://cocktails-hub.vercel.app/)
