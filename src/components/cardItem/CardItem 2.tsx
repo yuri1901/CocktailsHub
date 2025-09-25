@@ -31,7 +31,11 @@ export default function CardItem({ cocktail }: CardItemProps) {
         >
           Детальніше
         </Link>
-        <OrderButtons />
+        <OrderButtons
+          orderCocktail={() => {
+            cocktail;
+          }}
+        />
       </div>
     </article>
   );
