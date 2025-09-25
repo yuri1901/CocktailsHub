@@ -3,11 +3,10 @@ import type { ReactNode } from "react";
 
 interface IProps {
   children: ReactNode;
-  className?: string;
 }
 
-const PageContainer = ({ children, className = "" }: IProps) => {
-  return <section className={`container mx-auto px-2 ${className}`}>{children}</section>;
+const PageContainer = ({ children }: IProps) => {
+  return <section className={`mx-auto min-h-dvh min-h-screen flex flex-col gap-8 items-center pr-2 pl-2`}>{children}</section>;
 };
 
 export default PageContainer;

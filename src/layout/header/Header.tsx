@@ -6,14 +6,21 @@ import ThemeToggle from "../../components/themeToggle/ThemeToggle";
 
 export default function Header() {
   return (
-    <header className="w-full bg-white shadow-lg">
-      <section className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 py-4 dark:bg-black">
-        <Logo />
-        <section className="flex items-center gap-6 w-full md:w-auto justify-center md:justify-end">
+    <header className="w-full bg-gray-50 rounded-b-xl dark:bg-gray-900">
+      <section className="container mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4 shadow">
+        {/* Логотип окремо */}
+        <div className="w-full flex justify-center md:justify-start mb-2 md:mb-0">
+          <Logo />
+        </div>
+        {/* Пошук окремим рядком на мобільних */}
+        <div className="w-full md:w-auto flex justify-center mb-2 md:mb-0">
           <SearchBar />
+        </div>
+        {/* Корзина та перемикач теми окремо */}
+        <div className="w-full md:w-auto flex justify-center md:justify-end gap-4">
           <Basket />
           <ThemeToggle />
-        </section>
+        </div>
       </section>
     </header>
   );

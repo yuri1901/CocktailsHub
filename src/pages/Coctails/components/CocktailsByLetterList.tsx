@@ -2,7 +2,6 @@
 import useCocktailsByLetter from "../../../hooks/useCocktailsByLetter";
 
 // components
-import PageContainer from "../../../components/pageContainer/PageContainer";
 import SearchCardWrapper from "../../../components/searchCardWrapper/SearchCardWrapper";
 import Loading from "../../../components/loading/Loading";
 import Error from "../../../components/error/Error";
@@ -17,13 +16,14 @@ interface CocktailsByLetterListProps {
 export default function CocktailsByLetterList({ letter }: CocktailsByLetterListProps) {
   const { cardByLetter, loading, error } = useCocktailsByLetter(letter);
   return (
-    <PageContainer>
+    <section className="container">
       {loading && <Loading />}
       {!loading && error && <Error />}
       {!loading && !error && (
         <>
           <SearchResultsHeading />
           <SearchCardWrapper>
+             
             {cardByLetter?.map((cocktail) => (
               <CardItem
                 key={cocktail.idDrink}
@@ -34,6 +34,6 @@ export default function CocktailsByLetterList({ letter }: CocktailsByLetterListP
         </>
       )}
       {!loading && !error && !cardByLetter && <NoCocktailsFound />}
-    </PageContainer>
+    </section>
   );
 }

@@ -21,21 +21,21 @@ export default function CardItem({ cocktail }: CardItemProps) {
   const { addCocktailToList } = useContext(OrderContext);
 
   return (
-    <article className="cursor-pointer border rounded-xl p-4 bg-white shadow  flex flex-col items-center">
+    <article className="w-full cursor-pointer border border-gray-200 dark:border-gray-700 rounded-xl p-4 sm:p-6 bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 shadow-lg flex flex-col items-center transition-all duration-300 dark:text-gray-100">
       <img
         src={cocktail.strDrinkThumb}
         alt={cocktail.strDrink}
         className="w-full h-40 object-cover rounded-lg mb-4"
       />
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">{cocktail.strDrink}</h2>
-      <span className="inline-block bg-gray-100 text-gray-500 rounded-md px-3 py-1 text-base mb-2">
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2 text-center">{cocktail.strDrink}</h2>
+      <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-300 rounded-md px-3 py-1 text-base mb-2">
         {cocktail.strCategory} | {cocktail.strAlcoholic}
       </span>
-      <p className="text-sm text-gray-600 mb-2">Glass: {cocktail.strGlass}</p>
-      <div className="flex gap-2 mt-2 w-full">
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 text-center">Glass: {cocktail.strGlass}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 w-full">
         <Link
           to={`/cocktails/${cocktail.idDrink}`}
-          className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-center"
+          className="w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl hover:from-blue-600 hover:to-blue-800 transition text-center font-semibold text-base"
         >
           Детальніше
         </Link>
