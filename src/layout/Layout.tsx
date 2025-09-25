@@ -8,9 +8,9 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <PageContainer className="min-h-screen flex flex-col gap-[5px]">
+    <PageContainer>
       <Header />
-      <main className="flex-1 flex items-center justify-center">
+      <main className="flex-1 flex items-center justify-center  w-full">
         <Outlet />
       </main>
       <Footer />

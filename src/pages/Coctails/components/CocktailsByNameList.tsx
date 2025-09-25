@@ -5,7 +5,6 @@ import { useContext } from "react";
 import CocktailsContext from "../../../context/CocktailsContext";
 
 // components
-import PageContainer from "../../../components/pageContainer/PageContainer";
 import Loading from "../../../components/loading/Loading";
 import Error from "../../../components/error/Error";
 import CardItem from "../../../components/cardItem/CardItem";
@@ -17,7 +16,7 @@ export default function CocktailsByNameList() {
   const { nameCard, loading, error } = useContext(CocktailsContext);
 
   return (
-    <PageContainer>
+    <section className="container">
       {loading && <Loading />}
       {!loading && error && <Error />}
       {!loading && !error && (
@@ -34,6 +33,6 @@ export default function CocktailsByNameList() {
         </>
       )}
       {!loading && !error && !nameCard && <NoCocktailsFound />}
-    </PageContainer>
+    </section>
   );
 }

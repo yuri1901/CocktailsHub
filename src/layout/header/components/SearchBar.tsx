@@ -1,13 +1,16 @@
+// hook
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
+// router
+import { useNavigate } from "react-router-dom";
+// custom hook
 import useInputValidation from "../../../hooks/useInputValidation";
 
+// context
 import CocktailsContext from "../../../context/CocktailsContext";
 
 const SearchBar = () => {
   const { inputValue, handleChangeInput, getCocktailsByName, setLoading } = useContext(CocktailsContext);
-  // const [isError, setIsError] = useState(false);
   const { isError, validateRequiredField } = useInputValidation(inputValue);
   const navigate = useNavigate();
 
@@ -25,7 +28,7 @@ const SearchBar = () => {
         navigate("/cocktails");
       }}
       action="#"
-      className="flex items-center gap-2 p-2 bg-white rounded-lg shadow-md max-w-md "
+      className="flex items-center gap-3 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900 w-full"
     >
       <label
         htmlFor="search-coctel"
@@ -40,11 +43,11 @@ const SearchBar = () => {
         type="text"
         id="search-coctel"
         placeholder="Пошук коктейлю..."
-        className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 text-gray-700 ${isError ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-blue-400"}`}
+        className={`w-full min-w-[180px] md:min-w-[300px] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder:text-gray-500 dark:placeholder:text-gray-400 ${isError ? "border-red-500 focus:ring-red-400" : "border-gray-300 dark:border-gray-600 focus:ring-blue-400 dark:focus:ring-blue-500"}`}
       />
       <button
         type="submit"
-        className="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 active:bg-blue-700 transition-colors duration-200 font-semibold"
+        className="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors duration-200 font-semibold cursor-pointer"
       >
         Пошук
       </button>
